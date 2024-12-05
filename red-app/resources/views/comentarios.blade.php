@@ -1,24 +1,39 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Comentarios</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
-<body>
-<div class="container">
-    @include('navegacion')
-    <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
-        hola
+<!-- acordion comentario -->
+<div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne" aria-expanded="true"
+                    aria-controls="collapseOne">
+                Comentarios
+            </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse"
+             data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <form class="row g-3" action="{{ route('enviarComentario') }}" method="post">
+                    @csrf
+                    <input type="hidden" value="{{ $p->id }}" name="id">
+                    <div class="col">
+                        <input type="text" class="form-control" id="comentario"
+                               placeholder="Ingrese un comentario..."
+                               name="comentario" required>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-dark mb-3">
+                            Comentar
+                        </button>
+                    </div>
+                </form>
+                @if ($p->comentarios->isEmpty())
+                    <p>No hay comentarios.</p>
+                @else
+                    @foreach ($p->comentarios as $comentario)
+                            <input class="form-control m-1" type="text" value="{{ $comentario->contenido }}" readonly>
+                    @endforeach
+                @endif
+            </div>
+        </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-        crossorigin="anonymous"></script>
-</body>
-</html>
+<!-- acordion comentario -->

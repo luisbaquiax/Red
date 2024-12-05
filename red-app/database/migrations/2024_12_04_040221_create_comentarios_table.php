@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->text('contenido');
             $table->date('fecha');
-            $table->integer('id_usuario');
             $table->integer('id_publicacion');
+            $table->boolean('estado');
             $table->timestamps();
         });
     }

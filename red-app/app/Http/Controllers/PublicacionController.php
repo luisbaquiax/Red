@@ -11,7 +11,8 @@ class PublicacionController extends Controller
 {
     //
     public function list(){
-        return view('publicaciones')->with('publicaciones',Publicacion::all());
+        $publicaciones = Publicacion::with('comentarios')->get();
+        return view('publicaciones')->with('publicaciones', $publicaciones);
     }
 
     public function create(Request $request){

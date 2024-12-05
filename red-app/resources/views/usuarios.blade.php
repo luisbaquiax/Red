@@ -16,9 +16,9 @@
     @include('modal-nuevo-usuario')
 
     <div class="card p-3" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+        <h2 class="text-center">Usuarios</h2>
+        <hr>
         <table class="table">
-            <h2 class="text-center">Usuarios</h2>
-            <hr>
             <thead>
             <tr>
                 <th scope="col">Nombres</th>

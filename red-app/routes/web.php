@@ -17,6 +17,8 @@ Route::post('/nueva-publicacion', [PublicacionController::class, 'create'])->nam
 Route::post('/editar-publicacion', [PublicacionController::class, 'update'])->name('editarPublicacion');
 Route::get('/eliminar-publicacion/{id}', [PublicacionController::class, 'delete'])->name('eliminarPublicacion');
 
+Route::post('/enviar-comentario', [ComentarioController::class, 'create'])->name('enviarComentario');
+
 Route::get('/list-comentarios/{id}',
     [ComentarioController::class, 'comentariosPorPublicacion'])
     ->name('comentarios');
